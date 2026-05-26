@@ -1,0 +1,48 @@
+.sre-tooltip {
+    --sre-tooltip-bg-color: rgba(20, 20, 20, 0.96);
+    --sre-tooltip-border-width: 1px;
+    --sre-tooltip-border-color: rgba(215, 193, 138, 1);
+
+    position: fixed;
+    z-index: 1000;
+    display: none;
+    pointer-events: none;
+    max-width: 20vw;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: var(--font-size-13, 13px);
+    font-family: var(--font-body, "Roboto");
+    line-height: 1.45;
+
+    background: var(--sre-tooltip-bg-color);
+    border: var(--sre-tooltip-border-width) solid var(--sre-tooltip-border-color);
+    color: white;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.sre-tooltip__title {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--sre-tooltip-border-color);
+    font-size: var(--font-size-14, 14px);
+}
+
+.sre-tooltip__duration {
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: var(--font-size-11, 11px);
+    color: #aaa;
+}
+
+.sre-tooltip__source {
+    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: var(--font-size-11, 11px);
+    color: #aaa;
+}
+
+.sre-tooltip__description {
+    color: #e0e0e0;
+    overflow-wrap: anywhere;
+}
