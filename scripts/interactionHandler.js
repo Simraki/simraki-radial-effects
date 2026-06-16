@@ -36,7 +36,7 @@ export class InteractionHandler {
     }
 
     onPointerDown(event) {
-        if (!event.button || !this._isPointerOverCanvas(event)) return
+        if (event.button !== 0 || !this._isPointerOverCanvas(event)) return
         const hit = this._hitTest(event.global)
         if (!hit) return
 

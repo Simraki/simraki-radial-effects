@@ -69,7 +69,6 @@ export const ORBIT_SHAPES = {
 export const FLAGS = {
     IS_CONTAINER: 'SRE_IsContainer',
     IS_PROCESSED: 'SRE_IsProcessed',
-    BASE_OPACITY: 'SRE_BaseOpacity',
     EFFECT: 'SRE_ActiveEffect',
     BG_PARAMS: 'SRE_BackgroundParams',
     ANIM_NAME: 'SRE_HoverAnimationName',

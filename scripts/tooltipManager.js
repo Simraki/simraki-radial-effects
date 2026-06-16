@@ -1,5 +1,6 @@
 import { getSetting, getSettingName } from './settings.js'
 import { MODULE_ID, SETTING, TOOLTIP_ELEMENTS, TOOLTIP_VISIBILITY_MODES } from './config.js'
+import { getSystemAdapter } from './systems/systemAdapter.js'
 
 const RECREATE_TOOLTIP_SETTINGS = [SETTING.EFFECT_BG_COLOR, SETTING.EFFECT_BORDER_COLOR]
 
@@ -8,9 +9,11 @@ export class TooltipManager {
     _timeoutId = null
     _currentEffect = null
     _isV14 = false
+    _adapter = null
 
     constructor() {
         this._isV14 = game.release.generation === 14
+        this._adapter = getSystemAdapter()
 
         this._registerHooks()
         if (this.isEnabled) this.create()
@@ -108,30 +111,12 @@ export class TooltipManager {
             result.description = await CONFIG.ux.TextEditor.enrichHTML(effect.description, { relativeTo: effect })
         }
         if (allowed.has(TOOLTIP_ELEMENTS.DURATION)) {
-            result.duration = this._formatDuration(effect)
+            result.duration = this._adapter.formatDuration(effect)
         }
         if (allowed.has(TOOLTIP_ELEMENTS.SOURCE)) {
             result.source = effect.sourceName
         }
         return result
-    }
-
-    _formatDuration(effect) {
-        let isExpired = false
-        let isInfinite = false
-        if (this._isV14) {
-            isExpired = effect.duration.expired
-            isInfinite = !effect.isTemporary
-        } else {
-            const rem = effect.duration.remaining
-            isExpired = Number.isNumeric(rem) && rem <= 0
-            isInfinite = rem === null
-        }
-        if (isExpired) return game.i18n.localize(`${MODULE_ID}.TimeExpired`)
-        if ((effect.isTemporary && isInfinite) || !effect.isTemporary) {
-            return game.i18n.localize(`${MODULE_ID}.TimeUnlimited`)
-        }
-        return effect.duration.label
     }
 
     _shouldShowFor(token) {

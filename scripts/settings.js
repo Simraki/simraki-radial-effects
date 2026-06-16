@@ -7,8 +7,11 @@ import {
     TOOLTIP_ELEMENTS,
     TOOLTIP_VISIBILITY_MODES,
 } from './config.js'
+import { getSystemAdapter } from './systems/systemAdapter.js'
 
 export function registerSettings() {
+    const settingChoices = getSystemAdapter().settingChoices
+
     game.settings.register(MODULE_ID, SETTING.CLICK_ACTION_GM, {
         name: `${MODULE_ID}.Settings.ClickActionGM.Name`,
         hint: `${MODULE_ID}.Settings.ClickActionGM.Hint`,
@@ -16,11 +19,7 @@ export function registerSettings() {
         config: true,
         type: String,
         default: CLICK_ACTIONS.NOTHING,
-        choices: {
-            [CLICK_ACTIONS.NOTHING]: `${MODULE_ID}.SettingChoices.ClickActions.Nothing`,
-            [CLICK_ACTIONS.DISABLE]: `${MODULE_ID}.SettingChoices.ClickActions.Disable`,
-            [CLICK_ACTIONS.DELETE]: `${MODULE_ID}.SettingChoices.ClickActions.Delete`,
-        },
+        choices: settingChoices.ClickActions,
     })
 
     game.settings.register(MODULE_ID, SETTING.CLICK_ACTION_OWNER, {
@@ -30,11 +29,7 @@ export function registerSettings() {
         config: true,
         type: String,
         default: CLICK_ACTIONS.NOTHING,
-        choices: {
-            [CLICK_ACTIONS.NOTHING]: `${MODULE_ID}.SettingChoices.ClickActions.Nothing`,
-            [CLICK_ACTIONS.DISABLE]: `${MODULE_ID}.SettingChoices.ClickActions.Disable`,
-            [CLICK_ACTIONS.DELETE]: `${MODULE_ID}.SettingChoices.ClickActions.Delete`,
-        },
+        choices: settingChoices.ClickActions,
     })
 
     game.settings.register(MODULE_ID, SETTING.TOOLTIP_VISIBILITY_MODE, {
@@ -60,17 +55,9 @@ export function registerSettings() {
         scope: 'world',
         config: true,
         type: new foundry.data.fields.SetField(
-            new foundry.data.fields.StringField({
-                choices: {
-                    [TOOLTIP_ELEMENTS.DURATION]: { label: `${MODULE_ID}.SettingChoices.TooltipElements.Duration` },
-                    [TOOLTIP_ELEMENTS.DESCRIPTION]: {
-                        label: `${MODULE_ID}.SettingChoices.TooltipElements.Description`,
-                    },
-                    [TOOLTIP_ELEMENTS.SOURCE]: { label: `${MODULE_ID}.SettingChoices.TooltipElements.Source` },
-                },
-            }),
+            new foundry.data.fields.StringField({ choices: settingChoices.TooltipElements }),
         ),
-        default: [TOOLTIP_ELEMENTS.DURATION, TOOLTIP_ELEMENTS.DESCRIPTION, TOOLTIP_ELEMENTS.SOURCE],
+        default: [TOOLTIP_ELEMENTS.DURATION, TOOLTIP_ELEMENTS.DESCRIPTION],
     })
 
     game.settings.register(MODULE_ID, SETTING.TOOLTIP_ELEMENTS_PLAYER, {
@@ -79,15 +66,7 @@ export function registerSettings() {
         scope: 'world',
         config: true,
         type: new foundry.data.fields.SetField(
-            new foundry.data.fields.StringField({
-                choices: {
-                    [TOOLTIP_ELEMENTS.DURATION]: { label: `${MODULE_ID}.SettingChoices.TooltipElements.Duration` },
-                    [TOOLTIP_ELEMENTS.DESCRIPTION]: {
-                        label: `${MODULE_ID}.SettingChoices.TooltipElements.Description`,
-                    },
-                    [TOOLTIP_ELEMENTS.SOURCE]: { label: `${MODULE_ID}.SettingChoices.TooltipElements.Source` },
-                },
-            }),
+            new foundry.data.fields.StringField({ choices: settingChoices.TooltipElements }),
         ),
         default: [TOOLTIP_ELEMENTS.DURATION, TOOLTIP_ELEMENTS.DESCRIPTION],
     })

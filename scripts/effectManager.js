@@ -2,6 +2,7 @@ import { FLAGS, MODULE_ID, SETTING } from './config.js'
 import { computeEffectOrbit } from './effectOrbit.js'
 import { renderIconContainer } from './renderIconContainer.js'
 import { getSettingName } from './settings.js'
+import { getSystemAdapter } from './systems/systemAdapter.js'
 
 const REDRAW_EFFECTS_SETTINGS = [
     SETTING.EFFECT_SHAPE,
@@ -17,7 +18,13 @@ const REDRAW_EFFECTS_SETTINGS = [
 ]
 
 export class EffectManager {
+    _isV14 = false
+    _adapter = null
+
     constructor() {
+        this._isV14 = game.release.generation === 14
+        this._adapter = getSystemAdapter()
+
         this._registerHooks()
     }
 
@@ -46,7 +53,7 @@ export class EffectManager {
         })
         if (!effectSprites.length) return
 
-        const activeEffects = this._getActiveEffects(token)
+        const activeEffects = this._adapter.getActiveEffects(token)
         const positions = computeEffectOrbit(token, effectSprites.length)
         if (!positions) return
 
@@ -80,18 +87,5 @@ export class EffectManager {
         if (mustRedrawEffects) {
             EffectManager.refreshAllTokens()
         }
-    }
-
-    _getActiveEffects(token) {
-        const isV14 = game.release.generation === 14
-        return (
-            token.actor?.appliedEffects.filter((e) => {
-                if (!isV14) return e.isTemporary
-                return (
-                    e.showIcon === CONST.ACTIVE_EFFECT_SHOW_ICON.ALWAYS ||
-                    (e.showIcon === CONST.ACTIVE_EFFECT_SHOW_ICON.CONDITIONAL && e.isTemporary)
-                )
-            }) ?? []
-        )
     }
 }

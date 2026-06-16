@@ -72,7 +72,6 @@ export function renderIconContainer(sourceSprite, gridScale, iconSize) {
 
     container.zIndex = sourceSprite.zIndex
     container.alpha = baseOpacity
-    container[FLAGS.BASE_OPACITY] = baseOpacity
     container[FLAGS.IS_CONTAINER] = true
     return container
 }
