@@ -1,7 +1,6 @@
 # Simraki's Radial Effects
 
 ![Foundry Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FSimraki%2Fsimraki-radial-effects%2Fmaster%2Fmodule.json&label=Foundry%20Version&query=$.compatibility.verified&colorB=orange&style=for-the-badge)
-![System](https://img.shields.io/badge/System-D%26D%205e-red?style=for-the-badge)
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/Simraki/simraki-radial-effects?style=for-the-badge)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/Simraki/simraki-radial-effects/latest/module.zip?color=2b82fc&label=DOWNLOADS&style=for-the-badge)
@@ -70,7 +69,7 @@ interactions, tooltips, and click actions.
 ## Compatibility
 
 - **libWrapper**
-- **D&D 5e system**
+- **Any system** (tested on dnd5e, pf2e, swade, wfrp4e)
 
 ---
 
