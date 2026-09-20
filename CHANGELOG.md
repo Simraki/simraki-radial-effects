@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0 - 2026-09-20
+
+- Add support for [Status Icon Counters](https://foundryvtt.com/packages/statuscounter)
+
 ## 2.0.0 - 2026-06-16
 
 - Remove system (D&D 5e) requirements. Tested module on dnd5e, swade, wfrp4e

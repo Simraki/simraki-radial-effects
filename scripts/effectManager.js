@@ -3,6 +3,7 @@ import { computeEffectOrbit } from './effectOrbit.js'
 import { renderIconContainer } from './renderIconContainer.js'
 import { getSettingName } from './settings.js'
 import { getSystemAdapter } from './systems/systemAdapter.js'
+import { drawStatusCounter } from './integrations/statusIconCounters.js'
 
 const REDRAW_EFFECTS_SETTINGS = [
     SETTING.EFFECT_SHAPE,
@@ -72,6 +73,7 @@ export class EffectManager {
             sprite.position.set(pos.x, pos.y)
             sprite[FLAGS.BG_PARAMS] = { gridScale: positions.gridScale, slotSize: positions.iconSize }
             sprite[FLAGS.EFFECT] = activeEffects[sprite.zIndex] ?? null
+            drawStatusCounter(sprite, sprite[FLAGS.EFFECT], positions.iconSize)
         }
         token.effects.sortChildren()
     }

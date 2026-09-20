@@ -72,4 +72,5 @@ export const FLAGS = {
     EFFECT: 'SRE_ActiveEffect',
     BG_PARAMS: 'SRE_BackgroundParams',
     ANIM_NAME: 'SRE_HoverAnimationName',
+    STATUS_COUNTER_TEXT: 'SRE_StatusCounterText',
 }

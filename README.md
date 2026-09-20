@@ -73,6 +73,15 @@ interactions, tooltips, and click actions.
 
 ---
 
+## Other my modules
+
+- **[Simraki's Character Monitor](https://foundryvtt.com/packages/simraki-character-monitor)** - monitoring
+  module for D&D5e
+- **[Simraki's Cursed Items](https://foundryvtt.com/packages/simraki-cursed-items)** - adds support for cursed items
+  in D&D5e
+
+---
+
 ## License
 
 This package is under an [MIT](LICENSE) license and

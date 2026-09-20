@@ -1,8 +1,8 @@
 {
     "id": "simraki-radial-effects",
     "title": "Simraki's Radial Effects",
-    "description": "Radial effect icons with hover tooltips and click actions for D&amp;D 5e",
-    "version": "2.0.0",
+    "description": "Radial effect icons with hover tooltips and click actions for active effects",
+    "version": "2.1.0",
     "authors": [
         {
             "name": "Simraki",
